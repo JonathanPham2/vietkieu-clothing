@@ -216,7 +216,6 @@ model User {
   favorites     Favorite[]
   shippingAddresses ShippingAddress[]
   cart Cart? 
-  reviews Review[]
   
 }
 
@@ -253,7 +252,6 @@ model Product {
   price       Decimal
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
-  reviews     Review[]
   orderItems  OrderItem[]
   cartItems   CartItem[]
   favorites Favorite[]
@@ -324,18 +322,6 @@ model ShippingAddress {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   
-}
-
-model Review {
-  id String @id @default(cuid())
-  userId String
-  productId String
-  rating Int
-  comment String
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 
