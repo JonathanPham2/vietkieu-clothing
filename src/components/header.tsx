@@ -30,7 +30,7 @@ export default async function Header() {
                 <div className="p-4">
                     <form action={actions.signOut}>
                         <Button type="submit">
-                            Sign Out
+                            Sign out
                         </Button>
                     </form>
 
@@ -43,15 +43,25 @@ export default async function Header() {
         authContent =
          <>
         <NavbarItem>
-            <form action={actions.signIn}>
-                <Button type="submit">Sign in</Button>
-            </form>
+            <Popover placement="left">
+                <PopoverTrigger>
+                <div className="text-white cursor-pointer">Sign in</div>
+                </PopoverTrigger>
+                <PopoverContent>
+                    <div className="p-5">
+                    <form action={actions.signIn}>
+                        <button type="submit" className="flex items-center justify-center px-4 py-2 bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-300">
+                            <img src="/google-icon.svg" alt="Google logo" className="w-6 h-6 mr-3" />
+                            <span className="text-gray-700 font-medium">Sign in with Google</span>
+                        </button>
+                    </form>
+
+
+                    </div>
+                </PopoverContent>
+            </Popover>
         </NavbarItem>
-        <NavbarItem>
-            <form action={actions.signOut}>
-                <Button type="submit">Sign out</Button>
-            </form>
-        </NavbarItem>
+
         
         </>
     }
@@ -62,17 +72,17 @@ export default async function Header() {
             </NavbarBrand>
             <NavbarContent>
                 <NavbarItem>
-                    <Link className="text-white"  href={paths.visualPath()}>Visual</Link>
+                    <Link className="text-white hover:text-gray-700 transition-colors duration-300 "  href={paths.visualPath()}>Visual</Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-white"  href={paths.homePath()}>Home</Link>
+                    <Link className="text-white hover:text-gray-700 transition-colors duration-300"  href={paths.homePath()}>Home</Link>
                 </NavbarItem>
                 <NavbarItem>
-                    <Link className="text-white"  href={paths.shopPath()}>Shop</Link>
+                    <Link className="text-white hover:text-gray-700 transition-colors duration-300"  href={paths.shopPath()}>Shop</Link>
                 </NavbarItem>
-                <NavbarItem>
-                    <Link className="text-white"  href="/shop">order</Link>
-                </NavbarItem>
+               {session?.user ? ( <NavbarItem>
+                    <Link className="text-white hover:text-gray-700 transition-colors duration-300"  href="/shop">Order</Link>
+                </NavbarItem>) : null}
             </NavbarContent>
         
             
