@@ -18,7 +18,7 @@ export default  async function Home() {
 // }
 return (
   <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: "url('/background.webp')" }}>
-    
+      
       <div className="absolute inset-0 flex justify-center items-center bg-cover bg-center" style={{ width: '700px', height: '700px', backgroundImage: "url('/vietkieu.webp')" }}></div>
     
   </div>
