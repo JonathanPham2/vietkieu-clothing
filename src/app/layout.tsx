@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from "@/app/providers"
-import Header from '@/components/header'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,showHeader = true,
+  children
 }: {
   children: React.ReactNode ,
-  showHeader? :boolean,
+
 }) {
 
 
@@ -25,9 +25,8 @@ export default function RootLayout({
       <body className={inter.className}>
           <div>
             <Providers>
-            {showHeader && <Header/>}
-            {children}
             
+            {children}
             </Providers>
           </div>
         </body>
