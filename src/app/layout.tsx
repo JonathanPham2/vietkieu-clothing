@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Providers from "@/app/providers"
-import ConditionalHeader from '@/components/conditionalheader'
+import Header from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,19 +12,22 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  children,
+  children,showHeader = true,
 }: {
-  children: React.ReactNode 
+  children: React.ReactNode ,
+  showHeader? :boolean,
 }) {
+
+
 
   return (
     <html lang="en">
       <body className={inter.className}>
           <div>
             <Providers>
-            <ConditionalHeader>
+            {showHeader && <Header/>}
             {children}
-            </ConditionalHeader>
+            
             </Providers>
           </div>
         </body>
